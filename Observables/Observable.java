@@ -13,6 +13,12 @@ public class Observable {
             observer.update(data);
         }
     }
+    public void addObserver(Observer myObserver) {
+        itsObservers.add(myObserver);
+    }
 
+    public void removeObserver(Observer myObserver) {
+        itsObservers.remove(myObserver);
+    }
 
 }

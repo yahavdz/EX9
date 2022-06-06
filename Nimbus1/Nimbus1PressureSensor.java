@@ -3,20 +3,26 @@ package Nimbus1;
 import Observables.AlarmClock;
 import Observables.AlarmListener;
 import Observables.Sensor;
+import Observables.SensorAlarmListener;
 
-public class Nimbus1PressureSensor extends Sensor implements AlarmListener {
+import java.util.Random;
+
+public class Nimbus1PressureSensor extends Sensor  {
 
     private final int minPressure = 950;
     private final int maxPressure = 1050;
     private final int interval = 1100;
 
-    public Nimbus1PressureSensor(String type) {
+    Random rnd;
+    public Nimbus1PressureSensor(String type, int interval) {
         super(type, interval);
-        AlarmClock
+        rnd = RandomSupplier.getRnd();
+        (AlarmClock.theInstance()).register(interval, new SensorAlarmListener(this));
     }
+
 
     @Override
     public int read() {
-        return RandomSupplier.getRnd().nextInt(minPressure, maxPressure + 1);
+        return rnd.nextInt(minPressure, maxPressure + 1);
     }
 }

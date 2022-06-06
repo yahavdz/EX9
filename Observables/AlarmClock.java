@@ -10,6 +10,7 @@ public class AlarmClock
     public final int CLOCK_INTERVAL_MILLIS = 100;
     protected static AlarmClock instance = null;
     private ArrayList<AlarmClockRecord> itsAlarmClockRecords = new ArrayList();
+    int ticUnit =10; //could be different to change speed
 
     protected AlarmClock() {}
     public static AlarmClock theInstance()
@@ -20,8 +21,13 @@ public class AlarmClock
     }
 
     protected void tic(){
-        for (AlarmClockRecord acr : itsAlarmClockRecords) {
-            // acr.wakeup();
+        for (AlarmClockRecord record : itsAlarmClockRecords) {
+            if (record.getRemainingTime() - ticUnit <= 0) {
+                record.alarmListener.wakeUp();
+                record.setRemainingTime(record.getInterval());
+            } else {
+                record.decrementRemainingTime(ticUnit);
+            }
         }
     }
 

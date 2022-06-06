@@ -3,7 +3,7 @@ package Nimbus1;
 import Observables.AlarmClock;
 public class Nimbus1Clock extends AlarmClock
 {
-    protected Nimbus1Clock()
+    public Nimbus1Clock()
     {
         new Thread("polling Alarm Clock Records")
         {
