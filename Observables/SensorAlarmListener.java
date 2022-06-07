@@ -1,6 +1,6 @@
 package Observables;
 
-public class SensorAlarmListener   implements AlarmListener{
+public class SensorAlarmListener  implements AlarmListener{
     Sensor itsSensor;
 
     public SensorAlarmListener(Sensor itsSensor) {
@@ -11,5 +11,7 @@ public class SensorAlarmListener   implements AlarmListener{
     public void wakeUp() {
         itsSensor.check();
     }
+
+
 
 }

@@ -1,11 +1,12 @@
 package Observers;
 
-import Observables.WeatherMonitoringSystem;
-
 public class MonitoringScreen {
     public MonitoringScreen(WeatherMonitoringSystem ws) {
+        System.out.println("MonitoringScreen was created");
         ws.addTemperatureObserver(new MSTempObserver(this));
-        ws.addPressureObserver(new MSPressObserver(this));
+        System.out.println("MSTempObserver observes temperature");
+        ws.addIntPressureObserver(new MSPressObserver(this));
+        System.out.println("MSPressObserver observes pressure");
 
     }
 

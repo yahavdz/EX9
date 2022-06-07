@@ -1,17 +1,12 @@
 package Nimbus1;
 
-import Observables.AlarmClock;
-import Observables.AlarmListener;
-import Observables.Sensor;
-import Observables.SensorAlarmListener;
-
 import java.util.Random;
 
 public class Nimbus1TemperatureSensor extends Sensor {
 
-    private final int minTemp = 950;
-    private final int maxTemp = 1050;
-    private final int interval = 700;
+    private final int minTemp = 0;
+    private final int maxTemp = 40;
+
 
     Random rnd;
 
@@ -19,10 +14,11 @@ public class Nimbus1TemperatureSensor extends Sensor {
         super(type, interval);
         rnd = RandomSupplier.getRnd();
         (AlarmClock.theInstance()).register(interval, new SensorAlarmListener(this));
+        System.out.println(type+" registered to clock");
     }
 
     @Override
     public int read() {
-        return rnd.nextInt(minTemp, maxTemp + 1);
+        return rnd.nextInt(maxTemp-minTemp)+minTemp;
     }
 }

@@ -1,5 +1,8 @@
 package Observers;
 
 public interface Observer {
-    void update(int data);
+    <T> void update(T data);
+
+
+
 }

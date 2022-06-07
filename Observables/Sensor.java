@@ -1,6 +1,6 @@
 package Observables;
 
-public abstract class Sensor extends Observable {
+public abstract class Sensor extends Observable{
 
     protected int lastReading;
     protected int interval;
